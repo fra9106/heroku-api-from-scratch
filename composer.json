@@ -12,6 +12,7 @@
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "fakerphp/faker": "^1.13",
         "doctrine/orm": "^2.8",
         "jms/serializer-bundle": "^3.8",
         "knplabs/knp-paginator-bundle": "^5.4",
@@ -88,6 +89,6 @@
     },
     "require-dev": {
 
-        "fakerphp/faker": "^1.13"
+
     }
 }
