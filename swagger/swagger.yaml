@@ -1,0 +1,231 @@
+openapi: 3.0.0
+info:
+  title: api-bilmo
+  version: '0.1'
+servers:
+  -
+    url: 'http://localhost:8000/api'
+    description: 'Api BileMo'
+paths:
+  /phones:
+    get:
+      operationId: 'App\Controller\PhoneController::listPhone'
+      parameters:
+        -
+          name: page
+          in: query
+          description: 'Liste des produits (5 par page)'
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Liste des produits'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Phone'
+      security:
+        -
+          scalar: bearer
+    post:
+      operationId: 'App\Controller\PhoneController::addPhone'
+      responses:
+        '201':
+          description: 'Création d''un produit'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Phone'
+      security:
+        -
+          scalar: bearer
+    delete:
+      operationId: 'App\Controller\PhoneController::deletePhone'
+      responses:
+        '204':
+          description: 'Suppression d''un produit'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Phone'
+      security:
+        -
+          scalar: bearer
+  '/phones/{id}':
+    get:
+      operationId: 'App\Controller\PhoneController::showPhone'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Id du produit'
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Affichage d''un produit par son id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Phone'
+      security:
+        -
+          scalar: bearer
+    put:
+      operationId: 'App\Controller\PhoneController::updatePhone'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Modifie un produit'
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Le phone'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Phone'
+      security:
+        -
+          scalar: bearer
+  /shops:
+    get:
+      operationId: 'App\Controller\ShopController::listShops'
+      responses:
+        '200':
+          description: 'Liste des magasins'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shop'
+      security:
+        -
+          scalar: bearer
+  /users:
+    get:
+      operationId: 'App\Controller\UserController::listUser'
+      parameters:
+        -
+          name: page
+          in: query
+          description: 'Liste des utilisateurs (5 par page)'
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Liste des utilisateurs'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+      security:
+        -
+          scalar: bearer
+    post:
+      operationId: 'App\Controller\UserController::addUser'
+      responses:
+        '201':
+          description: 'Création d''un utilisateur'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+        -
+          scalar: bearer
+    delete:
+      operationId: 'App\Controller\UserController::deleteUser'
+      responses:
+        '204':
+          description: 'Suppression d''un utilisateur'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Phone'
+      security:
+        -
+          scalar: bearer
+  '/users/{id}':
+    get:
+      operationId: 'App\Controller\UserController::showUser'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'affichage d''un utilisateur par son id'
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Affiche un utilisateur par son id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+        -
+          scalar: bearer
+components:
+  schemas:
+    Phone:
+      properties:
+        id:
+          type: integer
+        model:
+          type: string
+        color:
+          type: string
+        description:
+          type: string
+        price:
+          type: integer
+      type: object
+    Shop:
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        arrival_date:
+          type: string
+          format: date-time
+      type: object
+    User:
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        address:
+          type: string
+        postal_code:
+          type: string
+        city:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+      type: object

@@ -1,0 +1,68 @@
+security:
+    encoders:
+        App\Entity\Shop:
+            algorithm: auto
+
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\Shop
+                property: email
+        # used to reload user from session & other features (e.g. switch_user)
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        api_doc:
+            pattern: ^/api/doc
+            security: false   
+        login:
+            pattern:  ^/api/login
+            stateless: true
+            anonymous: true
+            json_login:
+                check_path: /api/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        users:
+            pattern:   ^/api/users
+            methods: [GET, POST, DELETE] #methodes interdites sans pass
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        shops:
+            pattern:   ^/api/shops
+            methods: [GET]
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        phones:
+            pattern:   ^/api/phones
+            methods: [GET, PUT, POST, DELETE]
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        main:
+            anonymous: true
+            lazy: true 
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [GET, POST, DELETE]}
+        - { path: ^/api/shops, roles: IS_AUTHENTICATED_FULLY, methods: [GET]}
+        - { path: ^/api/phones, roles: IS_AUTHENTICATED_FULLY, methods: [GET, PUT, POST, DELETE]}
