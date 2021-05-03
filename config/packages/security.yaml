@@ -29,7 +29,7 @@ security:
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
         users:
             pattern:   ^/api/users
-            methods: [GET, POST, DELETE] #methodes interdites sans pass
+            methods: [POST, DELETE] #methodes interdites sans pass
             stateless: true
             guard:
                 authenticators:
@@ -43,7 +43,7 @@ security:
                     #- lexik_jwt_authentication.jwt_token_authenticator
         phones:
             pattern:   ^/api/phones
-            methods: [GET, PUT, POST, DELETE]
+            methods: [PUT, POST, DELETE]
             stateless: true
             guard:
                 authenticators:
