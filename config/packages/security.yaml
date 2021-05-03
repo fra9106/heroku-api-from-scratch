@@ -34,13 +34,13 @@ security:
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
-        shops:
-            pattern:   ^/api/shops
-            methods: [GET]
-            stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
+        #shops:
+            #pattern:   ^/api/shops
+            #methods: [GET]
+            #stateless: true
+            #guard:
+                #authenticators:
+                    #- lexik_jwt_authentication.jwt_token_authenticator
         phones:
             pattern:   ^/api/phones
             methods: [GET, PUT, POST, DELETE]
@@ -63,6 +63,6 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [GET, POST, DELETE]}
-        - { path: ^/api/shops, roles: IS_AUTHENTICATED_FULLY, methods: [GET]}
-        - { path: ^/api/phones, roles: IS_AUTHENTICATED_FULLY, methods: [GET, PUT, POST, DELETE]}
+        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [POST, DELETE]}
+        # - { path: ^/api/shops, roles: IS_AUTHENTICATED_FULLY, methods: [GET]}
+        - { path: ^/api/phones, roles: IS_AUTHENTICATED_FULLY, methods: [PUT, POST, DELETE]}
