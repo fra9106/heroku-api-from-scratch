@@ -4,27 +4,23 @@
         "title": "api-bilmo",
         "version": "0.1"
     },
-    "servers": [
-        {
-            "url": "http://localhost:8000/api",
-            "description": "Api BileMo"
-        }
-    ],
+    "servers": [{
+        "url": "http://api-from-scratch-symfony.herokuapp.com/api",
+        "description": "Api BileMo"
+    }],
     "paths": {
         "/phones": {
             "get": {
                 "operationId": "App\\Controller\\PhoneController::listPhone",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Liste des produits (5 par page)",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
+                "parameters": [{
+                    "name": "page",
+                    "in": "query",
+                    "description": "Liste des produits (5 par page)",
+                    "required": false,
+                    "schema": {
+                        "type": "integer"
                     }
-                ],
+                }],
                 "responses": {
                     "200": {
                         "description": "Liste des produits",
@@ -55,11 +51,9 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             },
             "delete": {
                 "operationId": "App\\Controller\\PhoneController::deletePhone",
@@ -75,27 +69,23 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             }
         },
         "/phones/{id}": {
             "get": {
                 "operationId": "App\\Controller\\PhoneController::showPhone",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id du produit",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "Id du produit",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
                     }
-                ],
+                }],
                 "responses": {
                     "200": {
                         "description": "Affichage d'un produit par son id",
@@ -108,25 +98,21 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             },
             "put": {
                 "operationId": "App\\Controller\\PhoneController::updatePhone",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Modifie un produit",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "Modifie un produit",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
                     }
-                ],
+                }],
                 "responses": {
                     "200": {
                         "description": "Le phone",
@@ -139,11 +125,9 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             }
         },
         "/shops": {
@@ -164,53 +148,45 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             }
         },
         "/shops/{id}": {
             "get": {
                 "operationId": "App\\Controller\\ShopController::showShop",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id du magasin",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "Id du magasin",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
                     }
-                ],
+                }],
                 "responses": {
                     "200": {
                         "description": "Magasin par son id"
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             }
         },
         "/users": {
             "get": {
                 "operationId": "App\\Controller\\UserController::listUser",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Liste des utilisateurs (5 par page)",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
+                "parameters": [{
+                    "name": "page",
+                    "in": "query",
+                    "description": "Liste des utilisateurs (5 par page)",
+                    "required": false,
+                    "schema": {
+                        "type": "integer"
                     }
-                ],
+                }],
                 "responses": {
                     "200": {
                         "description": "Liste des utilisateurs",
@@ -226,11 +202,9 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             },
             "post": {
                 "operationId": "App\\Controller\\UserController::addUser",
@@ -246,11 +220,9 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             },
             "delete": {
                 "operationId": "App\\Controller\\UserController::deleteUser",
@@ -266,27 +238,23 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             }
         },
         "/users/{id}": {
             "get": {
                 "operationId": "App\\Controller\\UserController::showUser",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "affichage d'un utilisateur par son id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "affichage d'un utilisateur par son id",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
                     }
-                ],
+                }],
                 "responses": {
                     "200": {
                         "description": "Affiche un utilisateur par son id",
@@ -299,11 +267,9 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "scalar": "bearer"
-                    }
-                ]
+                "security": [{
+                    "scalar": "bearer"
+                }]
             }
         }
     },
